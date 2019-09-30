@@ -63,5 +63,20 @@ namespace WebBrowser.UI
                 return;
             }
         }
+
+        private void exitWebBrowserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Erika Yardumian" + "\r\n" + "ezy0013@auburn.edu");
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            Navigate("www.google.com");
+        }
     }
 }
