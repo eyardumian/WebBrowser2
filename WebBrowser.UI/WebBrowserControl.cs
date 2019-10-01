@@ -36,6 +36,13 @@ namespace WebBrowser.UI
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
             Navigate(toolStripTextBox1.Text.ToString());
+
+            var item = new HistoryItem();
+            item.URL = toolStripTextBox1.Text;
+            item.Title = webBrowser1.DocumentTitle;
+            item.Date = DateTime.Now;
+
+            HistoryManager.AddItem(item);
         }
 
         private void TextBoxKeyUp(object sender, KeyEventArgs e)
@@ -50,12 +57,6 @@ namespace WebBrowser.UI
                 item.Date = DateTime.Now;
 
                 HistoryManager.AddItem(item);
-
-                var newItem = new BookmarkItem();
-                newItem.URL = toolStripTextBox1.Text;
-                newItem.Title = webBrowser1.DocumentTitle;
-
-                BookmarkManager.AddItem(newItem);
             }
         }
 
@@ -95,7 +96,23 @@ namespace WebBrowser.UI
 
         private void manageHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            var historyItemsForm = new HistoryManagerForm();
+            historyItemsForm.ShowDialog();
+        }
+
+        private void bookmarkButton_Click(object sender, EventArgs e)
+        {
+            var newItem = new BookmarkItem();
+            newItem.URL = toolStripTextBox1.Text;
+            newItem.Title = webBrowser1.DocumentTitle;
+
+            BookmarkManager.AddItem(newItem);
+        }
+
+        private void manageBookmarksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var bookmarkItemsForm = new BookmarksManagerForm();
+            bookmarkItemsForm.ShowDialog();
         }
     }
 }
