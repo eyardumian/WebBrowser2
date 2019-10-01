@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WebBrowser.Logic;
 
 namespace WebBrowser.UI
 {
@@ -42,6 +43,19 @@ namespace WebBrowser.UI
             if (e.KeyCode == Keys.Enter)
             {
                 Navigate(toolStripTextBox1.Text.ToString());
+
+                var item = new HistoryItem();
+                item.URL = toolStripTextBox1.Text;
+                item.Title = webBrowser1.DocumentTitle;
+                item.Date = DateTime.Now;
+
+                HistoryManager.AddItem(item);
+
+                var newItem = new BookmarkItem();
+                newItem.URL = toolStripTextBox1.Text;
+                newItem.Title = webBrowser1.DocumentTitle;
+
+                BookmarkManager.AddItem(newItem);
             }
         }
 
@@ -77,6 +91,11 @@ namespace WebBrowser.UI
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
             Navigate("www.google.com");
+        }
+
+        private void manageHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
