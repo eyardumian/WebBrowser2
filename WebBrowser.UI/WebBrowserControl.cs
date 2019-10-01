@@ -35,6 +35,12 @@ namespace WebBrowser.UI
 
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
+                toolStripStatusLabel1.Text = "Loading";
+                for (int i = 0; i <= 100; i++)
+                {
+                    toolStripProgressBar1.Value = i;
+                }
+            
             Navigate(toolStripTextBox1.Text.ToString());
 
             var item = new HistoryItem();
@@ -43,12 +49,28 @@ namespace WebBrowser.UI
             item.Date = DateTime.Now;
 
             HistoryManager.AddItem(item);
+
+            webBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(DisplayLabel);
+                
+            
+        }
+        private void DisplayLabel(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Done";
+            toolStripProgressBar1.Value = 0;
         }
 
         private void TextBoxKeyUp(object sender, KeyEventArgs e)
         {
+            
             if (e.KeyCode == Keys.Enter)
             {
+                toolStripStatusLabel1.Text = "Loading";
+                for (int i = 0; i <= 100; i++)
+                {
+                    toolStripProgressBar1.Value = i;
+                }
+
                 Navigate(toolStripTextBox1.Text.ToString());
 
                 var item = new HistoryItem();
@@ -57,6 +79,8 @@ namespace WebBrowser.UI
                 item.Date = DateTime.Now;
 
                 HistoryManager.AddItem(item);
+
+                webBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(DisplayLabel);
             }
         }
 
