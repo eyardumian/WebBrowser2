@@ -14,7 +14,7 @@ namespace WebBrowser.Logic
             var adapter = new HistoryTableAdapter();
             adapter.Insert(item.URL, item.Title, item.Date.ToShortDateString());
         }
-        public static List<BookmarkItem> GetItems()
+        public static List<HistoryItem> GetItems()
         {
             var adapter = new HistoryTableAdapter();
             var results = new List<HistoryItem>();
@@ -25,11 +25,12 @@ namespace WebBrowser.Logic
                 var item = new HistoryItem();
                 item.URL = row.URL;
                 item.Title = row.Title;
-                item.Date = row.Date;
+                item.Date = DateTime.Parse(row.Date.ToString());
                 item.Id = row.Id;
 
                 results.Add(item);
             }
             return results;
         }
+    }
 }
