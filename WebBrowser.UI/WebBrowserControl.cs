@@ -39,32 +39,8 @@ namespace WebBrowser.UI
             toolStripProgressBar1.Value = 0;
         }
 
-        private void toolStripButton5_Click(object sender, EventArgs e)
-        {
-                toolStripStatusLabel1.Text = "Loading";
-                for (int i = 0; i <= 100; i++)
-                {
-                    toolStripProgressBar1.Value = i;
-                }
-            
-            Navigate(toolStripTextBox1.Text.ToString());
-
-            var item = new HistoryItem();
-            item.URL = toolStripTextBox1.Text;
-            item.Title = webBrowser1.DocumentTitle;
-            item.Date = DateTime.Now;
-
-            HistoryManager.AddItem(item);
-
-            webBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(DisplayLabel);
-                
-            
-        }
-        
-
         private void TextBoxKeyUp(object sender, KeyEventArgs e)
         {
-            
             if (e.KeyCode == Keys.Enter)
             {
                 toolStripStatusLabel1.Text = "Loading";
@@ -85,6 +61,26 @@ namespace WebBrowser.UI
                 webBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(DisplayLabel);
             }
         }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+                toolStripStatusLabel1.Text = "Loading";
+                for (int i = 0; i <= 100; i++)
+                {
+                    toolStripProgressBar1.Value = i;
+                }
+            
+            Navigate(toolStripTextBox1.Text.ToString());
+
+            var item = new HistoryItem();
+            item.URL = toolStripTextBox1.Text;
+            item.Title = webBrowser1.DocumentTitle;
+            item.Date = DateTime.Now;
+
+            HistoryManager.AddItem(item);
+
+            webBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(DisplayLabel);                         
+        }       
 
         private void Navigate(String address)
         {
@@ -144,7 +140,7 @@ namespace WebBrowser.UI
         //Allow user to add and delete tabs using keyboard shorcuts.
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && (e.Keycode == Keys.T))
+            if (e.Control && (e.KeyCode == Keys.T))
             {
                 //var tabContent = new ();
             }
@@ -153,6 +149,12 @@ namespace WebBrowser.UI
         private void tabControl1_KeyDown(object sender, KeyEventArgs e)
         {
 
+        }
+
+        private void newTabToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var page = new TabPage("New Tab");
+            tabControl1.TabPages.Add(page);
         }
     }
 }
