@@ -44,6 +44,7 @@
             this.BookmarksListBox.FormattingEnabled = true;
             this.BookmarksListBox.Location = new System.Drawing.Point(0, 30);
             this.BookmarksListBox.Name = "BookmarksListBox";
+            this.BookmarksListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.BookmarksListBox.Size = new System.Drawing.Size(800, 420);
             this.BookmarksListBox.TabIndex = 0;
             // 
@@ -70,6 +71,7 @@
             // 
             this.BookmarkSearchTextBox.Name = "BookmarkSearchTextBox";
             this.BookmarkSearchTextBox.Size = new System.Drawing.Size(100, 25);
+            this.BookmarkSearchTextBox.Click += new System.EventHandler(this.BookmarkSearchTextBox_Click);
             // 
             // toolStripButton1
             // 

@@ -167,5 +167,10 @@ namespace WebBrowser.UI
         {
             webBrowser1.ShowSaveAsDialog();
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Erika Yardumian" + "\r\n" + "ezy0013@auburn.edu");
+        }
     }
 }

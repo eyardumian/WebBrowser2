@@ -36,16 +36,30 @@ namespace WebBrowser.UI
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-          
-            var searchTerm = BookmarkSearchTextBox.Text;
-            var items = BookmarkManager.GetItems();
-            foreach (var item in items)
+
+            BookmarksListBox.SelectedItems.Clear();
+            for (int i = BookmarksListBox.Items.Count - 1; i >= 0; i-- )
             {
-                if (item.Equals(searchTerm))
+                if (BookmarksListBox.Items[i].ToString().Contains(BookmarkSearchTextBox.Text))
                 {
-                    BookmarksListBox.Items.Add(item);
+                    BookmarksListBox.SetSelected(i,true);
                 }
             }
+            int index = BookmarksListBox.FindString(BookmarksListBox.Text);
+            if (index < 0)
+            {
+                MessageBox.Show("Item not found.");
+                BookmarkSearchTextBox.Text = String.Empty;
+            }
+            else
+            {
+                BookmarksListBox.SelectedIndex = index;
+            }
+        }
+
+        private void BookmarkSearchTextBox_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }
