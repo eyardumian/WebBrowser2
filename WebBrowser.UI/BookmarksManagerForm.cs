@@ -54,12 +54,18 @@ namespace WebBrowser.UI
             else
             {
                 BookmarksListBox.SelectedIndex = index;
+                StatusLabel.Text = BookmarksListBox.SelectedItems.Count.ToString() + " items found";
             }
         }
 
         private void BookmarkSearchTextBox_Click(object sender, EventArgs e)
         {
            
+        }
+
+        private void toolStripLabel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
