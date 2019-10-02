@@ -106,6 +106,7 @@
             this.savePageAsHTMLToolStripMenuItem.Name = "savePageAsHTMLToolStripMenuItem";
             this.savePageAsHTMLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.savePageAsHTMLToolStripMenuItem.Text = "Save Page As HTML";
+            this.savePageAsHTMLToolStripMenuItem.Click += new System.EventHandler(this.savePageAsHTMLToolStripMenuItem_Click);
             // 
             // printPageToolStripMenuItem
             // 

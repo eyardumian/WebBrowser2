@@ -162,5 +162,10 @@ namespace WebBrowser.UI
             TabPage current_tab = tabControl1.SelectedTab;
             tabControl1.TabPages.Remove(current_tab);
         }
+
+        private void savePageAsHTMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            webBrowser1.ShowSaveAsDialog();
+        }
     }
 }
