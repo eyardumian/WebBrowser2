@@ -23,8 +23,19 @@ namespace WebBrowser.UI
 
             foreach (var item in items)
             {
-                HistoryListBox.Items.Add(string.Format("{0} ({1})", item.Title, item.URL));
+                HistoryListBox.Items.Add(string.Format("{0} ({1}) {2}", item.Title, item.URL, item.Date));
             }
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            HistoryListBox.Items.Clear();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            var chosen = HistoryListBox.SelectedIndex;
+            HistoryListBox.Items.RemoveAt(chosen);
         }
     }
 }

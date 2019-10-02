@@ -33,6 +33,12 @@ namespace WebBrowser.UI
             webBrowser1.Refresh();
         }
 
+        private void DisplayLabel(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Done";
+            toolStripProgressBar1.Value = 0;
+        }
+
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
                 toolStripStatusLabel1.Text = "Loading";
@@ -54,11 +60,7 @@ namespace WebBrowser.UI
                 
             
         }
-        private void DisplayLabel(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-            toolStripStatusLabel1.Text = "Done";
-            toolStripProgressBar1.Value = 0;
-        }
+        
 
         private void TextBoxKeyUp(object sender, KeyEventArgs e)
         {
@@ -142,7 +144,7 @@ namespace WebBrowser.UI
         //Allow user to add and delete tabs using keyboard shorcuts.
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && (e.Keycode == Keys.T))
+            if (e.Control && (e.KeyCode == Keys.T))
             {
                 //var tabContent = new ();
             }
