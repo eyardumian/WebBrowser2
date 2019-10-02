@@ -99,6 +99,7 @@
             this.closeCurentTabToolStripMenuItem.Name = "closeCurentTabToolStripMenuItem";
             this.closeCurentTabToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.closeCurentTabToolStripMenuItem.Text = "Close Curent Tab";
+            this.closeCurentTabToolStripMenuItem.Click += new System.EventHandler(this.closeCurentTabToolStripMenuItem_Click);
             // 
             // savePageAsHTMLToolStripMenuItem
             // 

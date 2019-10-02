@@ -156,5 +156,11 @@ namespace WebBrowser.UI
             var page = new TabPage("New Tab");
             tabControl1.TabPages.Add(page);
         }
+
+        private void closeCurentTabToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TabPage current_tab = tabControl1.SelectedTab;
+            tabControl1.TabPages.Remove(current_tab);
+        }
     }
 }
