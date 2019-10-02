@@ -16,7 +16,5 @@ namespace WebBrowser.UI
         {
             InitializeComponent();
         }
-
-        
     }
 }
