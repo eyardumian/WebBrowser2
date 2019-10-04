@@ -170,7 +170,7 @@ namespace WebBrowser.UI
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Erika Yardumian" + "\r\n" + "ezy0013@auburn.edu");
+            //MessageBox.Show("Erika Yardumian" + "\r\n" + "ezy0013@auburn.edu");
         }
     }
 }

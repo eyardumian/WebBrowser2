@@ -23,7 +23,7 @@ namespace WebBrowser.UI
 
             foreach (var item in items)
             {
-                HistoryListBox.Items.Add(string.Format("{0} ({1}) {2}", item.Title, item.URL, item.Date));
+                HistoryListBox.Items.Add(string.Format("{0} ({1})", item.Title, item.URL));
             }
         }
 
