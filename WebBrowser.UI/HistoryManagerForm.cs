@@ -23,8 +23,11 @@ namespace WebBrowser.UI
 
             foreach (var item in items)
             {
-                HistoryListBox.Items.Add(string.Format("{0} ({1})", item.Title, item.URL));
+                HistoryListBox.Items.Add(string.Format("{0} ({1}) [{2}]", item.Title, item.URL, item.Date));
+                //MessageBox.Show(item.ToString());
+
             }
+
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)

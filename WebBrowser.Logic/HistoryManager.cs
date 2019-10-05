@@ -9,11 +9,13 @@ namespace WebBrowser.Logic
 {
     public class HistoryManager
     {
+        //Add items to the database.
         public static void AddItem(HistoryItem item)
         {
             var adapter = new HistoryTableAdapter();
             adapter.Insert(item.URL, item.Title, item.Date.ToShortDateString());
         }
+
         public static List<HistoryItem> GetItems()
         {
             var adapter = new HistoryTableAdapter();

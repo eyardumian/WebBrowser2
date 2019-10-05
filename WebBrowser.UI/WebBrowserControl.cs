@@ -33,10 +33,19 @@ namespace WebBrowser.UI
             webBrowser1.Refresh();
         }
 
+        //Update staus bar and add items to history table once website loads.
         private void DisplayLabel(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             toolStripStatusLabel1.Text = "Done";
             toolStripProgressBar1.Value = 0;
+
+
+            var item = new HistoryItem();
+            item.URL = toolStripTextBox1.Text;
+            item.Title = webBrowser1.DocumentTitle;
+            item.Date = DateTime.Now;
+
+            HistoryManager.AddItem(item);
         }
 
         private void TextBoxKeyUp(object sender, KeyEventArgs e)
@@ -50,14 +59,7 @@ namespace WebBrowser.UI
                 }
 
                 Navigate(toolStripTextBox1.Text.ToString());
-
-                var item = new HistoryItem();
-                item.URL = toolStripTextBox1.Text;
-                item.Title = webBrowser1.DocumentTitle;
-                item.Date = DateTime.Now;
-
-                HistoryManager.AddItem(item);
-
+             
                 webBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(DisplayLabel);
             }
         }
@@ -70,14 +72,7 @@ namespace WebBrowser.UI
                     toolStripProgressBar1.Value = i;
                 }
             
-            Navigate(toolStripTextBox1.Text.ToString());
-
-            var item = new HistoryItem();
-            item.URL = toolStripTextBox1.Text;
-            item.Title = webBrowser1.DocumentTitle;
-            item.Date = DateTime.Now;
-
-            HistoryManager.AddItem(item);
+            Navigate(toolStripTextBox1.Text.ToString());       
 
             webBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(DisplayLabel);                         
         }       
@@ -122,6 +117,7 @@ namespace WebBrowser.UI
             historyItemsForm.ShowDialog();
         }
 
+        //Add items to bookmarks datbase.
         private void bookmarkButton_Click(object sender, EventArgs e)
         {
             var newItem = new BookmarkItem();
@@ -131,6 +127,7 @@ namespace WebBrowser.UI
             BookmarkManager.AddItem(newItem);
         }
 
+        //Display History.
         private void manageBookmarksToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var bookmarkItemsForm = new BookmarksManagerForm();
@@ -151,12 +148,14 @@ namespace WebBrowser.UI
 
         }
 
+        //Add a new tab.
         private void newTabToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var page = new TabPage("New Tab");
             tabControl1.TabPages.Add(page);
         }
 
+        //Remove a tab.
         private void closeCurentTabToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TabPage current_tab = tabControl1.SelectedTab;
@@ -171,6 +170,11 @@ namespace WebBrowser.UI
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("Erika Yardumian" + "\r\n" + "ezy0013@auburn.edu");
+        }
+
+        private void printPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            webBrowser1.Print();
         }
     }
 }
