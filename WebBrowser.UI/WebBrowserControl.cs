@@ -38,14 +38,6 @@ namespace WebBrowser.UI
         {
             toolStripStatusLabel1.Text = "Done";
             toolStripProgressBar1.Value = 0;
-
-
-            var item = new HistoryItem();
-            item.URL = toolStripTextBox1.Text;
-            item.Title = webBrowser1.DocumentTitle;
-            item.Date = DateTime.Now;
-
-            HistoryManager.AddItem(item);
         }
 
         private void TextBoxKeyUp(object sender, KeyEventArgs e)
@@ -71,7 +63,14 @@ namespace WebBrowser.UI
                 {
                     toolStripProgressBar1.Value = i;
                 }
-            
+
+            var item = new HistoryItem();
+            item.URL = toolStripTextBox1.Text;
+            item.Title = webBrowser1.DocumentTitle;
+            item.Date = DateTime.Now;
+
+            HistoryManager.AddItem(item);
+
             Navigate(toolStripTextBox1.Text.ToString());       
 
             webBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(DisplayLabel);                         
@@ -175,6 +174,55 @@ namespace WebBrowser.UI
         private void printPageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             webBrowser1.Print();
+        }
+
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            webBrowser1.GoBack();
+        }
+
+        private void toolStripButton7_Click(object sender, EventArgs e)
+        {
+            webBrowser1.GoForward();
+        }
+
+        private void toolStripButton8_Click(object sender, EventArgs e)
+        {
+            webBrowser1.Refresh();
+        }
+
+        private void toolStripButton9_Click(object sender, EventArgs e)
+        {
+            Navigate("www.google.com");
+        }
+
+        private void toolStripButton10_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Loading";
+            for (int i = 0; i <= 100; i++)
+            {
+                toolStripProgressBar1.Value = i;
+            }
+
+            var item = new HistoryItem();
+            item.URL = toolStripTextBox2.Text;
+            item.Title = webBrowser1.DocumentTitle;
+            item.Date = DateTime.Now;
+
+            HistoryManager.AddItem(item);
+
+            Navigate(toolStripTextBox2.Text.ToString());
+
+            webBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(DisplayLabel);
+        }
+
+        private void toolStripButton11_Click(object sender, EventArgs e)
+        {
+            var newItem = new BookmarkItem();
+            newItem.URL = toolStripTextBox2.Text;
+            newItem.Title = webBrowser1.DocumentTitle;
+
+            BookmarkManager.AddItem(newItem);
         }
     }
 }
