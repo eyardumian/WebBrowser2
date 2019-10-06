@@ -42,11 +42,12 @@
             // 
             this.BookmarksListBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BookmarksListBox.FormattingEnabled = true;
-            this.BookmarksListBox.Location = new System.Drawing.Point(0, 30);
+            this.BookmarksListBox.Location = new System.Drawing.Point(0, 95);
             this.BookmarksListBox.Name = "BookmarksListBox";
             this.BookmarksListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.BookmarksListBox.Size = new System.Drawing.Size(800, 420);
+            this.BookmarksListBox.Size = new System.Drawing.Size(800, 355);
             this.BookmarksListBox.TabIndex = 0;
+            this.BookmarksListBox.SelectedIndexChanged += new System.EventHandler(this.BookmarksListBox_SelectedIndexChanged);
             // 
             // toolStrip1
             // 

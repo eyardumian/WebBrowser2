@@ -25,7 +25,9 @@ namespace WebBrowser.UI
             foreach (var item in items)
             {
                 BookmarksListBox.Items.Add(string.Format("{0} ({1})", item.Title, item.URL));
+                MessageBox.Show(item.ToString());
             }
+            MessageBox.Show("hello");
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -64,6 +66,11 @@ namespace WebBrowser.UI
         }
 
         private void toolStripLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BookmarksListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

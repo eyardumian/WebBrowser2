@@ -47,6 +47,7 @@
             this.HistoryListBox.Name = "HistoryListBox";
             this.HistoryListBox.Size = new System.Drawing.Size(800, 420);
             this.HistoryListBox.TabIndex = 0;
+            this.HistoryListBox.SelectedIndexChanged += new System.EventHandler(this.HistoryListBox_SelectedIndexChanged);
             // 
             // toolStrip1
             // 
@@ -111,6 +112,7 @@
             this.Controls.Add(this.HistoryListBox);
             this.Name = "HistoryManagerForm";
             this.Text = "HistoryManager";
+            this.Load += new System.EventHandler(this.HistoryManagerForm_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
