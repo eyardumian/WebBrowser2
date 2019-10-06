@@ -50,7 +50,7 @@ namespace WebBrowser.UI
                     toolStripProgressBar1.Value = i;
                 }
 
-                Navigate(toolStripTextBox1.Text.ToString());
+                Navigate(toolStripTextBox2.Text.ToString());
              
                 webBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(DisplayLabel);
             }
@@ -58,22 +58,7 @@ namespace WebBrowser.UI
 
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
-                toolStripStatusLabel1.Text = "Loading";
-                for (int i = 0; i <= 100; i++)
-                {
-                    toolStripProgressBar1.Value = i;
-                }
-
-            var item = new HistoryItem();
-            item.URL = toolStripTextBox1.Text;
-            item.Title = webBrowser1.DocumentTitle;
-            item.Date = DateTime.Now;
-
-            HistoryManager.AddItem(item);
-
-            Navigate(toolStripTextBox1.Text.ToString());       
-
-            webBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(DisplayLabel);                         
+                                    
         }       
 
         private void Navigate(String address)
@@ -119,11 +104,7 @@ namespace WebBrowser.UI
         //Add items to bookmarks datbase.
         private void bookmarkButton_Click(object sender, EventArgs e)
         {
-            var newItem = new BookmarkItem();
-            newItem.URL = toolStripTextBox1.Text;
-            newItem.Title = webBrowser1.DocumentTitle;
-
-            BookmarkManager.AddItem(newItem);
+            
         }
 
         //Display History.
@@ -204,14 +185,14 @@ namespace WebBrowser.UI
                 toolStripProgressBar1.Value = i;
             }
 
-            var item = new HistoryItem();
-            item.URL = toolStripTextBox2.Text;
-            item.Title = webBrowser1.DocumentTitle;
-            item.Date = DateTime.Now;
-
-            HistoryManager.AddItem(item);
-
             Navigate(toolStripTextBox2.Text.ToString());
+
+            var hisItem = new HistoryItem();
+            hisItem.URL = toolStripTextBox2.Text;
+            hisItem.Title = webBrowser1.DocumentTitle;
+            hisItem.Date = DateTime.Now;
+
+            HistoryManager.AddItem(hisItem);
 
             webBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(DisplayLabel);
         }
