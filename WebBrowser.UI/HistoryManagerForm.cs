@@ -50,5 +50,28 @@ namespace WebBrowser.UI
         {
 
         }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            HistoryListBox.SelectedItems.Clear();
+            for (int i = HistoryListBox.Items.Count - 1; i >= 0; i--)
+            {
+                if (HistoryListBox.Items[i].ToString().Contains(HistorySearchTextBox.Text))
+                {
+                    HistoryListBox.SetSelected(i, true);
+                }
+            }
+            int index = HistoryListBox.FindString(HistoryListBox.Text);
+            if (index < 0)
+            {
+                MessageBox.Show("Item not found.");
+                HistorySearchTextBox.Text = String.Empty;
+            }
+            else
+            {
+                HistoryListBox.SelectedIndex = index;
+                StatusLabel.Text = HistoryListBox.SelectedItems.Count.ToString() + " items found";
+            }
+        }
     }
 }

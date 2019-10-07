@@ -38,6 +38,7 @@
             this.webBrowserControl1.Name = "webBrowserControl1";
             this.webBrowserControl1.Size = new System.Drawing.Size(800, 450);
             this.webBrowserControl1.TabIndex = 0;
+            this.webBrowserControl1.Load += new System.EventHandler(this.webBrowserControl1_Load);
             // 
             // MainForm
             // 
@@ -47,13 +48,14 @@
             this.Controls.Add(this.webBrowserControl1);
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private WebBrowserControl webBrowserControl1;
+        public WebBrowserControl webBrowserControl1;
     }
 }
 

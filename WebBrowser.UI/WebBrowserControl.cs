@@ -38,6 +38,9 @@ namespace WebBrowser.UI
         {
             toolStripStatusLabel1.Text = "Done";
             toolStripProgressBar1.Value = 0;
+
+            tabControl1.SelectedTab.Text = webBrowser1.DocumentTitle;
+
         }
 
         private void TextBoxKeyUp(object sender, KeyEventArgs e)
@@ -204,6 +207,11 @@ namespace WebBrowser.UI
             newItem.Title = webBrowser1.DocumentTitle;
 
             BookmarkManager.AddItem(newItem);
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            webBrowser1.Navigate("www.google.com");
         }
     }
 }
